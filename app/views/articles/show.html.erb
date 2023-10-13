@@ -1,14 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="page-content p-4">
+  <p id="notice"><%= notice %></p>
+  <h1 class="text-center ">Articles Listing Page</h1>
+  <h4 class="text-end "><%= link_to 'Create New Article ', new_article_path %></h4>
+  <div class="container ">
+    <% if @article %>
+      <div class="row my-4 justify-content-md-center">
+        <div class="col-4">
+          <div class="card text-center " id="author">
+            <div class="card-header" >
+              <%= @article.title %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title " id="title"><%= @article.title %></h5>
+              <p class="card-text"><%= @article.description %></p>
+              <%= link_to 'Back', articles_path, class:"btn btn-outline-success" %>
+              <%= link_to 'Edit', edit_article_path(@article) , class:"btn btn-outline-primary"%>
+              <%= link_to 'Destroy', @article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+            <div class="card-footer text-muted">
+              <%= @article.created_at.to_date %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

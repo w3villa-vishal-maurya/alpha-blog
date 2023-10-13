@@ -1,15 +1,66 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+:root{
+    --white : white;
+    --gray : gray;
+    --red : red;
+    --lightgray : lightgray;
+    --lightgreen : lightgreen;
+}
+
+body{
+    margin: auto !important;
+}
+
+.navbar{
+    background-color: black !important;
+}
+
+.nav-link{
+    color: var(--white) !important;
+}
+
+#logo{
+    float: left;
+    color: var(--white);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+.jumbotron{
+    height: 425px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--gray);
+    color: var(--white);
+    /* background-image: url('bgpic1.webp'); */ 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('bgpic.avif');
+    /* background-image: asset-url("bgpic.avif"); */
+}
+
+.sticky-footer{
+    position: fixed !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    right: 0px;
+}
+
+.page-content{
+    background-color: var(--lightgray);
+    margin-top: -17px !important;
+    margin-bottom: -25px !important;
+}
+
+#title{
+    color: var(--lightgreen);
+}
+
+#author{
+    color: var(--gray);
+}
+
