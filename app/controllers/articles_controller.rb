@@ -1,9 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_ransack, only: %i[ new show edit update destroy ]
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distnict: true)
+    # @articles = Article.all
   end
 
   # GET /articles/1 or /articles/1.json
@@ -63,6 +66,12 @@ class ArticlesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def set_ransack
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distnict: true)
+    # @articles = Article.all
   end
 
   # Only allow a list of trusted parameters through.

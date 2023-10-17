@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   # before_action :set_user, only: [:edit, :show]
+  before_action :set_ransack, only: %i[ home new show edit update destroy ]
+
   def new
     @user = User.new
+  end
+
+  def home
+    # @articles = Article.all
   end
 
   def index
@@ -75,4 +81,10 @@ class UsersController < ApplicationController
   # def set_user
   #   @user = User.find(params[:id])
   # end
+
+  def set_ransack
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distnict: true)
+    # @articles = Article.all
+  end
 end

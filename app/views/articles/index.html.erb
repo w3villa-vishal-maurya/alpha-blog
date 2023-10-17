@@ -2,6 +2,7 @@
   <p id="notice"><%= notice %></p>
   <h1 class="text-center ">Articles Listing Page</h1>
   <h4 class="text-end "><%= link_to 'Create New Article ', new_article_path %></h4>
+ 
   <div class="container ">
     <% @articles.each do |article| %>
       <div class="row my-4 justify-content-md-center">
@@ -15,7 +16,7 @@
               <p class="card-text"><%= article.description %></p>
               <%= link_to 'Show', article , class:"btn btn-outline-success"%>
               <%= link_to 'Edit', edit_article_path(article) , class:"btn btn-outline-primary"%>
-              <%# <%= link_to 'Destroy', article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %> 
+              <%# <%= link_to 'Destroy', article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to "Destroy", articles_path(article), class:"btn btn-outline-danger", data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
