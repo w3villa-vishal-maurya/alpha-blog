@@ -24,7 +24,9 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
+    # debugger
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
 
     respond_to do |format|
       if @article.save
@@ -52,7 +54,7 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    debugger
+    # debugger
     @article.destroy
 
     respond_to do |format|

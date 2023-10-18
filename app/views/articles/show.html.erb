@@ -13,9 +13,15 @@
             <div class="card-body">
               <h5 class="card-title " id="title"><%= @article.title %></h5>
               <p class="card-text"><%= @article.description %></p>
-              <%= link_to 'Back', articles_path, class:"btn btn-outline-success" %>
-              <%= link_to 'Edit', edit_article_path(@article) , class:"btn btn-outline-primary"%>
-              <%= link_to 'Destroy', @article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <div class="article-btn">
+                <% if validate_user_articles(@article)%>
+                  <%= link_to 'Edit', edit_article_path(@article) , class:"btn btn-outline-primary"%>
+                  <%= button_to 'Destroy', @article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Back', articles_path, class:"btn btn-outline-success" %>
+                <%else%>
+                  <%= link_to 'Back', articles_path, class:"btn btn-outline-success" %>
+                <%end%>
+              </div>
             </div>
             <div class="card-footer text-muted">
               <%= @article.created_at.to_date %>

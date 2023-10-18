@@ -2,25 +2,27 @@
   <p id="notice"><%= notice %></p>
   <h1 class="text-center ">Articles Listing Page</h1>
   <h4 class="text-end "><%= link_to 'Create New Article ', new_article_path %></h4>
- 
   <div class="container ">
     <% @articles.each do |article| %>
       <div class="row my-4 justify-content-md-center">
         <div class="col-4">
           <div class="card text-center " id="author">
             <div class="card-header" >
-              <%= article.title %>
+              <%= "by- #{filter_user_by_id(article.user_id).username}" %>
             </div>
             <div class="card-body">
               <h5 class="card-title " id="title"><%= article.title %></h5>
               <p class="card-text"><%= article.description %></p>
-              <%= link_to 'Show', article , class:"btn btn-outline-success"%>
-              <%= link_to 'Edit', edit_article_path(article) , class:"btn btn-outline-primary"%>
-              <%# <%= link_to 'Destroy', article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%= link_to "Destroy", articles_path(article), class:"btn btn-outline-danger", data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>
+              <div class="article-btn">
+                <% if validate_user_articles(article)%>
+                  <%= link_to 'Edit', edit_article_path(article) , class:"btn btn-outline-primary"%>
+                  <%# <%= link_to 'Destroy', article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= button_to 'Destroy', article, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Show', article , class:"btn btn-outline-success"%>
+                <%else%>
+                  <%= link_to 'Show', article , class:"btn btn-outline-success"%>
+                <%end%>
+              </div>
             </div>
             <div class="card-footer text-muted">
               <%= article.created_at.to_date %>
@@ -30,7 +32,6 @@
       </div>
     <% end %>
   </div>
-
   <div class="d-flex justify-content-md-center">
     <%= paginate @articles, class:"text-center"%>
   </div>
