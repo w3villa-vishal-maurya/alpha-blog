@@ -35,10 +35,12 @@
         <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
         <%# <%= button_to 'Search', articles_path%>
         <% if user_signed_in?%>
-          <%= search_form_for @q, url: articles_path do |f| %>
-            <%= f.search_field :title_cont, class: "form-control me-2" %>
-            <%= f.submit class: "btn btn-outline-success"%>
-          <% end %>
+        
+          <%# <%= search_form_for @q, url: articles_path do |f| %> %>
+            <%# <%= f.search_field :title_cont, class: "form-control me-2" %> %>
+            <%# <%= f.submit class: "btn btn-outline-success"%> %>
+          <%# <% end %> %>
+          
         <% end %>
       </form>
     </div>

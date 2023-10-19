@@ -26,6 +26,12 @@
               </h4>
               <%= form.text_area :description %>
             </div>
+            <div class="field card-title d-flex flex-column">
+              <h4>
+                <%= form.label :category_id%>
+              </h4>
+              <%= form.select :category_id, options_for_select(Category.all.map { |c| [c.category_name, c.id] }), class: "form-control"%>
+            </div>
             <div class="actions tn btn-primary">
               <%= form.submit %>
             </div>

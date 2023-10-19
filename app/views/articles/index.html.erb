@@ -1,7 +1,11 @@
 <div class="page-content p-4">
   <p id="notice"><%= notice %></p>
   <h1 class="text-center ">Articles Listing Page</h1>
-  <h4 class="text-end "><%= link_to 'Create New Article ', new_article_path %></h4>
+  <h4 class="text-end ">
+    <% if current_user %>
+      <%= link_to 'Create New Article ', new_article_path %>
+    <% end %>
+  </h4>
   <div class="container ">
     <% @articles.each do |article| %>
       <div class="row my-4 justify-content-md-center">

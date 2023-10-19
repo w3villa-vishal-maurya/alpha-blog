@@ -8,7 +8,7 @@
         <div class="col-4">
           <div class="card text-center " id="author">
             <div class="card-header" >
-              <%= @article.title %>
+              <%= "by- #{filter_user_by_id(@article.user_id).username}" %>
             </div>
             <div class="card-body">
               <h5 class="card-title " id="title"><%= @article.title %></h5>
